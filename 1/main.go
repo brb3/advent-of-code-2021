@@ -17,15 +17,9 @@ func main() {
 // Returns the amount of times the value increases.
 func partOne(lines []int) int {
 	var increases int
-	var prev int
 
-	for i := 0; i < len(lines); i++ {
-		if i == 0 {
-			continue
-		}
-
-		prev = lines[i-1]
-		if lines[i] > prev {
+	for i := 1; i < len(lines); i++ {
+		if lines[i] > lines[i-1] {
 			increases++
 		}
 	}
