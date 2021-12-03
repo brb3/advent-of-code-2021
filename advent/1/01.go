@@ -1,14 +1,12 @@
 package main
 
 import (
-	"bufio"
+	"advent_utils"
 	"fmt"
-	"os"
-	"strconv"
 )
 
 func main() {
-	lines := loadData("input.txt")
+	lines := advent_utils.ConvertStringArrayToIntArray(advent_utils.LoadData("input.txt"))
 	fmt.Println("Part One:", partOne(lines))
 	fmt.Println("Part Two:", partTwo(lines))
 }
@@ -43,27 +41,4 @@ func partTwo(lines []int) int {
 	}
 
 	return partOne(sliding)
-}
-
-func loadData(filename string) []int {
-	file, err := os.Open(filename)
-	if err != nil {
-		fmt.Println("Cannot open input file!")
-		os.Exit(1)
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-	scanner.Split(bufio.ScanLines)
-	var content []int
-	for scanner.Scan() {
-		line, err := strconv.ParseInt(scanner.Text(), 10, 0)
-		if err != nil {
-			fmt.Println("Unable to parse input")
-			os.Exit(1)
-		}
-		content = append(content, int(line))
-	}
-
-	return content
 }
