@@ -1,4 +1,4 @@
-module 1
+module advent
 
 go 1.17
 
